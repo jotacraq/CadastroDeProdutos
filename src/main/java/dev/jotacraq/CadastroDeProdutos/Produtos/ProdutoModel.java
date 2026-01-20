@@ -1,6 +1,9 @@
-package dev.jotacraq.CadastroDeProdutos;
+package dev.jotacraq.CadastroDeProdutos.Produtos;
 
+import dev.jotacraq.CadastroDeProdutos.Entregas.EntregasModel;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 
 // Entity ele transforma uma classe em uma entidade do BD.
@@ -17,6 +20,11 @@ public class ProdutoModel {
     private String serie;
     private float preco;
     private String tipo;
+
+    // Muitos produto podem ter uma só entrega
+    @ManyToOne
+    @JoinColumn(name = "entregas_id") // Foreign Key (Chave Estrangeira)
+    private List<EntregasModel> entregas;
 
     public ProdutoModel() {
     }
